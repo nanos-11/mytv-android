@@ -130,7 +130,8 @@ fun LeanbackSettingsCategoryIptv(
                 remoteConfig = true,
             )
 
-            LeanbackSettingsIptvSourceHistoryDialog(showDialogProvider = { showDialog },
+            LeanbackSettingsIptvSourceHistoryDialog(
+                showDialogProvider = { showDialog },
                 onDismissRequest = { showDialog = false },
                 iptvSourceHistoryProvider = {
                     settingsViewModel.iptvSourceUrlHistoryList.filter {
@@ -174,7 +175,10 @@ private fun LeanbackSettingsIptvSourceHistoryDialog(
     onSelected: (String) -> Unit = {},
     onDeleted: (String) -> Unit = {},
 ) {
-    val iptvSourceHistory = listOf(Constants.IPTV_SOURCE_URL) + iptvSourceHistoryProvider()
+    val iptvSourceHistory = listOf(
+        Constants.IPTV_SOURCE_URL, Constants.IPTV_SOURCE_URL_TWO, Constants.IPTV_SOURCE_URL_THREE,
+        Constants.IPTV_SOURCE_URL_FOUR,
+    ) + iptvSourceHistoryProvider()
     val currentIptvSource = currentIptvSourceProvider()
 
     if (showDialogProvider()) {

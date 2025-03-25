@@ -131,11 +131,13 @@ class LeanbackMainContentState(
         } else {
             (urlIdx + _currentIptv.urlList.size) % _currentIptv.urlList.size
         }
-
-        val url = iptv.urlList[_currentIptvUrlIdx]
-        log.d("播放${iptv.name}（${_currentIptvUrlIdx + 1}/${_currentIptv.urlList.size}）: $url")
-
-        videoPlayerState.prepare(url)
+        try {
+            val url = iptv.urlList[_currentIptvUrlIdx]
+            log.d("播放${iptv.name}（${_currentIptvUrlIdx + 1}/${_currentIptv.urlList.size}）: $url")
+            videoPlayerState.prepare(url)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     fun changeCurrentIptvToPrev() {

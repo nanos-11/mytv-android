@@ -2,6 +2,7 @@ package top.yogiczy.mytv.ui.screens.leanback.settings.components
 
 import android.content.Context
 import android.content.pm.PackageInfo
+import android.view.View
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -27,6 +28,7 @@ import top.yogiczy.mytv.ui.theme.LeanbackTheme
 fun LeanbackSettingsCategoryAbout(
     modifier: Modifier = Modifier,
     packageInfo: PackageInfo = rememberPackageInfo(),
+    showCodeRepositoryItem: Boolean = false, // 新增参数，控制是否显示代码仓库 item
 ) {
     TvLazyColumn(
         modifier = modifier,
@@ -46,35 +48,36 @@ fun LeanbackSettingsCategoryAbout(
                 trailingContent = packageInfo.versionName,
             )
         }
+        if (showCodeRepositoryItem) {
+            item {
+                var showQrDialog by remember { mutableStateOf(false) }
 
-        item {
-            var showQrDialog by remember { mutableStateOf(false) }
+                LeanbackSettingsCategoryListItem(
+                    headlineContent = "代码仓库",
+                    trailingContent = {
+                        Row(
+                            horizontalArrangement = Arrangement.spacedBy(4.dp),
+                            verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
+                        ) {
+                            androidx.tv.material3.Text(Constants.APP_REPO)
 
-            LeanbackSettingsCategoryListItem(
-                headlineContent = "代码仓库",
-                trailingContent = {
-                    Row(
-                        horizontalArrangement = Arrangement.spacedBy(4.dp),
-                        verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
-                    ) {
-                        androidx.tv.material3.Text(Constants.APP_REPO)
+                            Icon(
+                                Icons.AutoMirrored.Default.OpenInNew,
+                                contentDescription = null,
+                                modifier = Modifier.size(16.dp),
+                            )
+                        }
+                    },
+                    onSelected = { showQrDialog = true },
+                )
 
-                        Icon(
-                            Icons.AutoMirrored.Default.OpenInNew,
-                            contentDescription = null,
-                            modifier = Modifier.size(16.dp),
-                        )
-                    }
-                },
-                onSelected = { showQrDialog = true },
-            )
-
-            LeanbackQrcodeDialog(
-                text = Constants.APP_REPO,
-                description = "扫码前往代码仓库",
-                showDialogProvider = { showQrDialog },
-                onDismissRequest = { showQrDialog = false },
-            )
+                LeanbackQrcodeDialog(
+                    text = Constants.APP_REPO,
+                    description = "扫码前往代码仓库",
+                    showDialogProvider = { showQrDialog },
+                    onDismissRequest = { showQrDialog = false },
+                )
+            }
         }
     }
 }

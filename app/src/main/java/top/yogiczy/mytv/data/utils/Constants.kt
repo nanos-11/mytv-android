@@ -16,9 +16,20 @@ object Constants {
 
     /**
      * IPTV源地址
+     * 现在：https://gh-proxy.com/raw.githubusercontent.com/vbskycn/iptv/refs/heads/master/tv/iptv4.m3u
+     *      https://gh-proxy.com/raw.githubusercontent.com/vbskycn/iptv/refs/heads/master/tv/iptv6.m3u
+     *
+     * 之前：https://mirror.ghproxy.com/https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u
      */
     const val IPTV_SOURCE_URL =
-        "https://mirror.ghproxy.com/https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u"
+        "https://gh-proxy.com/raw.githubusercontent.com/vbskycn/iptv/refs/heads/master/tv/iptv4.m3u"
+
+    const val IPTV_SOURCE_URL_TWO =
+        "https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u"
+    const val IPTV_SOURCE_URL_THREE =
+        "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u"
+    const val IPTV_SOURCE_URL_FOUR =
+        "https://iptv-org.github.io/iptv/index.m3u"
 
     /**
      * IPTV源缓存时间（毫秒）
