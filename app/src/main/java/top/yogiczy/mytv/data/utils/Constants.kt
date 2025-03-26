@@ -12,7 +12,7 @@ object Constants {
     /**
      * 应用 代码仓库
      */
-    const val APP_REPO = "https://github.com/yaoxieyoulei/mytv-android"
+    const val APP_REPO = "https://github.com/nanos-11/mytv-android"
 
     /**
      * IPTV源地址
@@ -22,7 +22,7 @@ object Constants {
      * 之前：https://mirror.ghproxy.com/https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u
      */
     const val IPTV_SOURCE_URL =
-        "https://gh-proxy.com/raw.githubusercontent.com/vbskycn/iptv/refs/heads/master/tv/iptv4.m3u"
+        "https://gh-proxy.com/raw.githubusercontent.com/nanos-11/mytv-android/refs/heads/main/iptv4.m3u"
 
     const val IPTV_SOURCE_URL_TWO =
         "https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u"
